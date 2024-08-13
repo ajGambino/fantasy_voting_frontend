@@ -3,6 +3,19 @@
 	padding: 0;
 }
 
-.App {
-	text-align: center;
+.nav-link {
+	color: white;
+	text-decoration: none;
+	text-decoration: none;
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	background-color: rgb(44, 113, 240);
+	padding: 1rem;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 }
