@@ -143,11 +143,11 @@ const VoteForm = () => {
 	};
 
 	return (
-		<div>
+		<div className='vote2'>
 			<form onSubmit={handleSubmit}>
 				<h1>Vote on League Settings</h1>
 				{questions.map((question) => (
-					<div key={question.id}>
+					<div className='vote' key={question.id}>
 						<h2>{question.text}</h2>
 						{question.type === 'yes-no' || question.type === 'waivers' ? (
 							<div>
@@ -208,8 +208,9 @@ const VoteForm = () => {
 						)}
 					</div>
 				))}
-
-				<button type='submit'>Submit Votes</button>
+				<div className='btn'>
+					<button type='submit'>Submit Votes</button>
+				</div>
 			</form>
 		</div>
 	);

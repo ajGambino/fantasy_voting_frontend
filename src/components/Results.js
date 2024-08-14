@@ -20,15 +20,15 @@ const Results = () => {
 			<table border='1' style={{ width: '100%', borderCollapse: 'collapse' }}>
 				<thead>
 					<tr>
-						<th>Question</th>
+						<th>Setting</th>
 						<th>Option</th>
-						<th>Preferred</th>
-						<th>Would Do</th>
-						<th>Absolutely Not</th>
+						<th>Pref.</th>
+						<th>Would</th>
+						<th>A. Not</th>
 						<th>Yes</th>
 						<th>No</th>
-						<th>Continuous</th>
-						<th>FA Period</th>
+						<th>Cont.</th>
+						<th>FA</th>
 					</tr>
 				</thead>
 				<tbody>
