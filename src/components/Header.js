@@ -22,7 +22,7 @@ const Header = () => {
 				</li>
 				<li>
 					<Link to='/' className='nav-link'>
-						Log Out
+						Log In/Out
 					</Link>
 				</li>
 			</ul>
