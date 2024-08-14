@@ -57,7 +57,7 @@ const Draft = () => {
 
 	return (
 		<div style={styles.container}>
-			<h2>Pick Your Draft Night Availability</h2>
+			<h2>Pick Your Draft Night Availability (9PM)</h2>
 			<div style={styles.flexContainer}>
 				{dates.map((date) => (
 					<div key={date} style={styles.flexItem}>
