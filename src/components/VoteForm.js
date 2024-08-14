@@ -146,6 +146,22 @@ const VoteForm = () => {
 		<div className='vote2'>
 			<form onSubmit={handleSubmit}>
 				<h1>Vote on League Settings</h1>
+				<h3>Asterisk* denotes last years settings. </h3>
+				<p>
+					Waivers Continuous: All signings will be done in batches. Players
+					remain on waiver continuously and thus are always subject to offers.
+				</p>
+				<p>
+					FA period: All offers are processed after the league's specified
+					waiver period. Players who are not claimed during the waiver process
+					will be free agents and can be added on a first come, first served
+					basis.
+				</p>
+				<p>
+					2games per week: Top 5 scoring teams receive additional Win and bottom
+					5 a Loss. 1game vs the league, 1 head to head matchup. So each week
+					you can go 2-0, 1-1, or 0-2.
+				</p>
 				{questions.map((question) => (
 					<div className='vote' key={question.id}>
 						<h2>{question.text}</h2>

@@ -5,11 +5,11 @@ const Header = () => {
 	return (
 		<nav>
 			<ul>
-				<li>
+				{/* <li>
 					<Link to='/login' className='nav-link'>
 						Log In
 					</Link>
-				</li>
+				</li> */}
 				<li>
 					<Link to='/vote' className='nav-link'>
 						Vote

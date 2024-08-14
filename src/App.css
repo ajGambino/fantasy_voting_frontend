@@ -2,6 +2,9 @@
 	margin: 0.2rem;
 	padding: 0rem;
 }
+body {
+	background-color: rgb(236, 224, 224);
+}
 
 .nav-link {
 	color: white;
@@ -25,6 +28,8 @@ nav {
 
 h1 {
 	text-align: center;
+	color: rgb(247, 142, 142);
+	text-shadow: 2px 2px white;
 }
 
 h2 {
@@ -53,4 +58,21 @@ h2 {
 
 .login button {
 	width: 100%;
+}
+
+.results {
+	color: rgb(0, 122, 255);
+	text-align: center;
+}
+
+p {
+	color: black;
+	text-shadow: 2px 2px white;
+	text-align: center;
+	border-bottom: 2px solid rgb(0, 122, 255);
+	padding: 1rem;
+}
+
+h3 {
+	text-align: center;
 }
