@@ -37,7 +37,7 @@ const Draft = () => {
 
 		try {
 			const response = await axios.post(
-				'http://127.0.0.1:5000/availability',
+				`${API_URL}/availability`,
 				{ availability },
 				{
 					headers: {
@@ -46,8 +46,12 @@ const Draft = () => {
 				}
 			);
 			console.log('Availability submitted successfully:', response.data);
+			alert('Your availability has been submitted successfully!');
 		} catch (error) {
 			console.error('Error submitting availability:', error);
+			alert(
+				'There was an error submitting your availability. Please try again.'
+			);
 		}
 	};
 

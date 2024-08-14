@@ -61,11 +61,21 @@ const VoteForm = () => {
 		});
 	};
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-
+	const validateVotes = () => {
 		let valid = true;
 		let validationErrors = [];
+
+		// Define the options that cannot be selected as "Absolutely Not"
+		const forbiddenAbsolutelyNot = [
+			'$100*',
+			'$100',
+			'7*',
+			'7',
+			'1*',
+			'1',
+			'14 weeks, 6 playoff teams*',
+			'14 weeks, 6 playoff teams',
+		];
 
 		Object.keys(votes).forEach((questionId) => {
 			const choices = Object.values(votes[questionId]);
@@ -75,6 +85,27 @@ const VoteForm = () => {
 			const absolutelyNotCount = choices.filter(
 				(choice) => choice === 'absolutely not'
 			).length;
+
+			// Prevent "Absolutely Not" for forbidden options
+			Object.keys(votes[questionId]).forEach((optionId) => {
+				if (
+					votes[questionId][optionId] === 'absolutely not' &&
+					forbiddenAbsolutelyNot.includes(
+						questions
+							.find((q) => q.id === parseInt(questionId))
+							.options.find((o) => o.id === parseInt(optionId)).text
+					)
+				) {
+					valid = false;
+					validationErrors.push(
+						`You cannot select "Absolutely Not" for ${
+							questions
+								.find((q) => q.id === parseInt(questionId))
+								.options.find((o) => o.id === parseInt(optionId)).text
+						}.`
+					);
+				}
+			});
 
 			if (choices.length === 0) {
 				valid = false;
@@ -109,6 +140,15 @@ const VoteForm = () => {
 
 		if (!valid) {
 			alert(validationErrors.join('\n'));
+		}
+
+		return valid;
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		if (!validateVotes()) {
 			return;
 		}
 
