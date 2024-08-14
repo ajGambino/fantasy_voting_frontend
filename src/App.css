@@ -63,6 +63,8 @@ h2 {
 .results {
 	color: rgb(0, 122, 255);
 	text-align: center;
+	width: 95%;
+	margin: 0 auto;
 }
 
 p {
@@ -75,4 +77,8 @@ p {
 
 h3 {
 	text-align: center;
+}
+
+th {
+	padding: 0.2rem;
 }
