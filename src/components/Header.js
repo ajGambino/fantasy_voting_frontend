@@ -5,11 +5,6 @@ const Header = () => {
 	return (
 		<nav>
 			<ul>
-				{/* <li>
-					<Link to='/login' className='nav-link'>
-						Log In
-					</Link>
-				</li> */}
 				<li>
 					<Link to='/vote' className='nav-link'>
 						Vote
@@ -18,6 +13,11 @@ const Header = () => {
 				<li>
 					<Link to='/results' className='nav-link'>
 						Results
+					</Link>
+				</li>
+				<li>
+					<Link to='/draft' className='nav-link'>
+						Draft
 					</Link>
 				</li>
 				<li>

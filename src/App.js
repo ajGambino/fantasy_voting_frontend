@@ -5,6 +5,7 @@ import Signup from './pages/Signup';
 import VoteForm from './components/VoteForm';
 import Header from './components/Header';
 import Results from './components/Results';
+import Draft from './components/Draft';
 import './App.css';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
 				<Route path='/signup' element={<Signup />} />
 				<Route path='/vote' element={<VoteForm />} />{' '}
 				<Route path='/results' element={<Results />} />
+				<Route path='/draft' element={<Draft />} />
 			</Routes>
 		</Router>
 	);
