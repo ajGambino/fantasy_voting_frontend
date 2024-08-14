@@ -87,3 +87,8 @@ th,
 td {
 	padding: 0.2rem;
 }
+
+th {
+	text-shadow: 2px 2px white;
+	font-size: 1.1rem;
+}
