@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const Draft = () => {
@@ -13,7 +13,6 @@ const Draft = () => {
 		'September 1',
 		'September 2',
 		'September 3',
-		'September 4',
 	];
 
 	const API_URL = process.env.REACT_APP_API_URL;
@@ -24,7 +23,28 @@ const Draft = () => {
 	}, {});
 
 	const [availability, setAvailability] = useState(initialState);
+	const [summary, setSummary] = useState([]);
 
+	const fetchSummary = useCallback(async () => {
+		const token = localStorage.getItem('token');
+		try {
+			const response = await axios.get(`${API_URL}/availability-summary`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+			const sortedData = response.data.sort((a, b) => {
+				const dateA = new Date(a.date);
+				const dateB = new Date(b.date);
+				return dateA - dateB;
+			});
+
+			setSummary(sortedData);
+		} catch (error) {
+			console.error('Error fetching summary:', error);
+		}
+	}, [API_URL]);
 	const handleSelection = (date, status) => {
 		setAvailability((prevState) => ({
 			...prevState,
@@ -47,6 +67,7 @@ const Draft = () => {
 			);
 			console.log('Availability submitted successfully:', response.data);
 			alert('Your availability has been submitted successfully!');
+			fetchSummary(); // Fetch the updated summary after submitting
 		} catch (error) {
 			console.error('Error submitting availability:', error);
 			alert(
@@ -55,9 +76,13 @@ const Draft = () => {
 		}
 	};
 
+	useEffect(() => {
+		fetchSummary(); // Fetch summary when the component loads
+	}, [fetchSummary]);
+
 	return (
 		<div style={styles.container}>
-			<h2>Pick Your Draft Night Availability (9PM)</h2>
+			<h2>Pick Your Draft Night Availability</h2>
 			<div style={styles.flexContainer}>
 				{dates.map((date) => (
 					<div key={date} style={styles.flexItem}>
@@ -101,6 +126,37 @@ const Draft = () => {
 			<button onClick={handleSubmit} style={styles.button}>
 				Submit Availability
 			</button>
+
+			{/* Summary Table */}
+			{summary.length > 0 && (
+				<table
+					border='1'
+					style={{
+						width: '100%',
+						marginTop: '20px',
+						borderCollapse: 'collapse',
+					}}
+				>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Available</th>
+							<th>Maybe</th>
+							<th>Unavailable</th>
+						</tr>
+					</thead>
+					<tbody>
+						{summary.map((item) => (
+							<tr key={item.date}>
+								<td>{item.date}</td>
+								<td>{item.available}</td>
+								<td>{item.maybe}</td>
+								<td>{item.unavailable}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 		</div>
 	);
 };

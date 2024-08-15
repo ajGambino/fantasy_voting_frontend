@@ -58,6 +58,11 @@ h2 {
 	align-items: center;
 }
 
+.btn {
+	width: 100%;
+	margin: 0 auto;
+}
+
 .login button {
 	width: 100%;
 }
