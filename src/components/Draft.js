@@ -18,7 +18,7 @@ const Draft = () => {
 	const API_URL = process.env.REACT_APP_API_URL;
 
 	const initialState = dates.reduce((acc, date) => {
-		acc[date] = 'unavailable';
+		acc[date] = 'available';
 		return acc;
 	}, {});
 
